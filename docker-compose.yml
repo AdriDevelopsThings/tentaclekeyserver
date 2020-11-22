@@ -9,17 +9,19 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
       MYSQL_USER: 'tks'
       MYSQL_PASSWORD: 'sajbashuifbhuiasbfhuiBASGIHJ'
-      MYSQL_DB: 'tks'
+      MYSQL_DATABASE: 'tks'
     volumes:
-    - data:/var/lib/mysql
+    - db_data:/var/lib/mysql
   app:
     build: .
     restart: unless-stopped
+    ports:
+    - 8080:80
     depends_on:
       - db
     volumes:
     - ./config.py:/app/resources/config.py
     - gpg:/app/.gnupg
 volumes:
-  data:
+  db_data:
   gpg:
