@@ -5,3 +5,4 @@ flask_sqlalchemy
 pymysql
 python_gnupg
 werkzeug
+cryptography
