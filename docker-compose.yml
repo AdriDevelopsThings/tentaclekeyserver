@@ -11,7 +11,7 @@ services:
       MYSQL_PASSWORD: 'sajbashuifbhuiasbfhuiBASGIHJ'
       MYSQL_DATABASE: 'tks'
     volumes:
-    - data:/var/lib/mysql
+    - db_data:/var/lib/mysql
   app:
     build: .
     restart: unless-stopped
@@ -23,5 +23,5 @@ services:
     - ./config.py:/app/resources/config.py
     - gpg:/app/.gnupg
 volumes:
-  data:
+  db_data:
   gpg:
