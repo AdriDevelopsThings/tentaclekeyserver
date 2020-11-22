@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search results for '{{s_qry}}'</title>
+</head>
+<body>
+    <h1>Search results for '{{s_qry}}'</h1>
+    <p>Just uploaded on these keyservers: {{ ", ".join(upload) }} .</p>
+    <pre>Fingerprint                                       Date                User ID</pre>
+    <hr>
+    {% for key in keys %}
+
+    <pre><a href="/get/{{key.fingerprint}}">{{ add_fingerprint_spaces(key.fingerprint) }}</a> {{key.date}} <a href="{{ uri.replace('S_QRY', key.uids[0].uid) }}">{{key.uids[0].uid}}</a> {% for uid in key.uids[1:] %} <br>                                                                      <a href="{{ uri.replace('S_QRY', uid.uid) }}">{{uid.uid}}</a> {% endfor %}
+    </pre>
+
+    {% endfor %}
+</body>
+</html>

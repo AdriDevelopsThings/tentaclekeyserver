@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: mysql
+    restart: unless-stopped
+    expose:
+      - 3306
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_USER: 'tks'
+      MYSQL_PASSWORD: 'sajbashuifbhuiasbfhuiBASGIHJ'
+      MYSQL_DB: 'tks'
+    volumes:
+    - data:/var/lib/mysql
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - db
+    volumes:
+    - ./config.py:/app/resources/config.py
+    - gpg:/app/.gnupg
+volumes:
+  data:
+  gpg:

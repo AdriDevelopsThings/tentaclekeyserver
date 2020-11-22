@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="application-name" content="TentacleKeyServer">
+    <meta name="author" content="AdriBloober">
+    <meta name="description" content="Automatically receive keys that are loaded from other keyservers. The keys are automatically uploaded to other keyservers.">
+    <meta name="keywords" lang="en" content="keyserver, gpg, key, server, servers, keys, automatically, receive, upload, redirect, adribloober, adri, bloober">
+    <meta name="keywords" lang="de" content="keyserver, gpg, key, schlüssel, server, servers, keys, automatisch, empfangen, bekommen, erhalten, upload, hochladen, redirect, weiterleiten, adribloober, adri, bloober">
+
+    <title>TentacleKeyServer</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container" style="margin-top: 1rem;">
+        <p>Search on famous keyservers. The keys will be distributed on these keyservers. Or upload your key to this and the famous keyservers.</p>
+    </div>
+    <div class="container" style="margin-top: 0.25rem;">
+        <h1>Search for key</h1>
+        <form method="get" action="/get">
+            <div class="form-group">
+                <label for="searchQuery">OpenGPG Key search query (e.g. e-mail address)</label>
+                <input type="text" class="form-control" id="searchQuery" name="search">
+            </div>
+            <div class="form-group">
+                <label for="outputType">Output type</label>
+                <select class="form-control" id="outputType" name="output">
+                    <option>pretty</option>
+                    <option>ascii_armored</option>
+                    <option>json</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input type="checkbox" class="form-input" id="autoUpload" name="auto_upload" checked>
+                <label class="form-check-label" for="autoUpload">Upload key automatically on other keyservers</label>
+              </div>
+            <div class="form-group">
+                <input type="checkbox" class="form-input" id="forceLoding" name="force_loading">
+                <label class="form-check-label" for="forceLoding">Force key loading from all keyservers</label>
+              </div>
+            <button type="submit" class="btn btn-primary btn-block">Search</button>
+        </form>
+    </div>
+
+    <div class="container" style="margin-top: 3rem">
+        <h1>Upload key(s)</h1>
+        <form method="post" action="/upload">
+          <div class="form-group">
+            <label for="gpgKey">GPG Key</label>
+            <textarea class="form-control" id="gpgKey" rows="10" name="key"></textarea>
+          </div>
+            <div class="form-group">
+                <label for="uploadOutputType">Output type</label>
+                <select class="form-control" id="uploadOutputType" name="output">
+                    <option>pretty</option>
+                    <option>json</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input type="checkbox" class="form-input" id="uploadAutoUpload" name="auto_upload" checked>
+                <label class="form-check-label" for="uploadAutoUpload">Upload key automatically on other keyservers</label>
+              </div>
+            <button type="submit" class="btn btn-primary btn-block">Upload</button>
+        </form>
+    </div>
+</body>
+</html>

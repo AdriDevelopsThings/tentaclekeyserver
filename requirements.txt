@@ -1,0 +1,7 @@
+requests
+flask
+gunicorn
+flask_sqlalchemy
+pymysql
+python_gnupg
+werkzeug
