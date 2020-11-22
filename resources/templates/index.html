@@ -13,7 +13,11 @@
     <title>TentacleKeyServer</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.x-git.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/a1ef254acd.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <div class="container" style="margin-top: 1rem;">
@@ -67,5 +71,40 @@
             <button type="submit" class="btn btn-primary btn-block">Upload</button>
         </form>
     </div>
+    <div id="footer" style="width: 90%; padding: 1rem">
+        <span style="text-align: center" id="twitter_footer">
+            Made with <i class="fa fa-heart pulse"></i> by <a target="_blank" href="https://twitter.com/AdriBloober">@AdriBloober</a>
+        </span><br>
+        <span style="text-align: center" id="github_footer">
+            <i class="fab fa-github"></i> <a href="https://github.com/AdriBloober/tentaclekeyserver">https://github.com/AdriBloober/tentaclekeyserver</a>
+        </span>
+
+    </div>
+
+    <script>
+        const twitter_footer = document.getElementById("twitter_footer")
+        const github_footer = document.getElementById("github_footer")
+        docReady = (fn) => {
+            if (document.readyState === "complete" || document.readyState === "interactive") {
+                setTimeout(fn, 1);
+            } else {
+                document.addEventListener("DOMContentLoaded", fn);
+            }
+        }
+
+        window.onresize = () => {
+            if (window.innerHeight >= 1024) {
+                twitter_footer.style.position = "fixed";
+                twitter_footer.style.bottom = "1.4rem";
+                github_footer.style.position = "fixed";
+                github_footer.style.bottom = "1px";
+            } else {
+                twitter_footer.style.position = "inherit";
+                twitter_footer.style.bottom = "0px";
+                github_footer.style.position = "inherit";
+                github_footer.style.bottom = "0px";
+            }
+        }
+    </script>
 </body>
 </html>

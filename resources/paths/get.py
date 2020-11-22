@@ -9,7 +9,13 @@ from resources.utils import add_fingerprint_spaces
 
 @app.route("/get")
 def get(output="pretty"):
-    search = request.args.get("search", None)
+    raw_search = request.args.get("search", None)
+    search = ""
+    for s in raw_search:
+        if s != " " or len(search) > 0:
+            search += s
+    while search.endswith(" "):
+        search = search[:len(search) - 1]
     if not search:
         raise BadRequest(
             description=BadRequest.description + " Please add the 'search' get field."
