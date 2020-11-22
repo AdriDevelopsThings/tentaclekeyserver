@@ -9,7 +9,7 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
       MYSQL_USER: 'tks'
       MYSQL_PASSWORD: 'sajbashuifbhuiasbfhuiBASGIHJ'
-      MYSQL_DB: 'tks'
+      MYSQL_DATABASE: 'tks'
     volumes:
     - data:/var/lib/mysql
   app:
