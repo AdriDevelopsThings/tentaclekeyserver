@@ -1,6 +1,6 @@
 from werkzeug.exceptions import BadRequest, NotFound
 
-from resources import app
+from resources import app, limiter
 from flask import request, Response, render_template
 
 from resources.domain_logic import download_key
@@ -8,6 +8,8 @@ from resources.utils import add_fingerprint_spaces
 
 
 @app.route("/get")
+@limiter.limit("100/hour")
+@limiter.limit("400/day")
 def get(output="pretty"):
     raw_search = request.args.get("search", None)
     search = ""

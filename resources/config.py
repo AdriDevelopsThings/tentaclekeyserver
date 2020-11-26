@@ -5,3 +5,5 @@ SQLALCHEMY_PATH = "mysql+pymysql://root@localhost/test"
 MY_DOMAIN = "http://example.test"
 GPG_HOME_DIR = ".gnupg"
 GOOGLE_ANALYTICS_GTAG = None
+X_FORWARDED_HEADER_FIELD = None  # string or None for disable
+CLOUDFLARE = False

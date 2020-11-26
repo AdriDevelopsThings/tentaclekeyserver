@@ -4,13 +4,14 @@ from flask import request, redirect
 from sqlalchemy.orm.exc import NoResultFound
 from werkzeug.exceptions import BadRequest
 
-from resources import app, gpg, database
+from resources import app, gpg, database, limiter
 from resources.database.key import GPGKey
 from resources.database.uid import GPGUid
 from resources.domain_logic import get_keyserver
 from resources.keyserver import upload_key, GPGRawKey
 
-
+@limiter.limit("50/hour")
+@limiter.limit("200/day")
 @app.route("/upload", methods=["GET", "POST"])
 def upload(key=None):
     if request.method != "POST":
