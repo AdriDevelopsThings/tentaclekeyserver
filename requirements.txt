@@ -6,3 +6,4 @@ pymysql
 python_gnupg
 werkzeug
 cryptography
+Flask-Limiter

@@ -1,8 +1,10 @@
 from flask import Response, abort
 
-from resources import app, gpg
+from resources import app, gpg, limiter
 
 
+@limiter.limit("100/hour")
+@limiter.limit("200/day")
 @app.route("/get/<string:fingerprint>")
 def get_by_fingerprint(fingerprint):
     fingerprint = fingerprint.replace(" ", "")
