@@ -80,31 +80,13 @@
 
     </div>
 
-    <script>
-        const twitter_footer = document.getElementById("twitter_footer")
-        const github_footer = document.getElementById("github_footer")
-        docReady = (fn) => {
-            if (document.readyState === "complete" || document.readyState === "interactive") {
-                setTimeout(fn, 1);
-            } else {
-                document.addEventListener("DOMContentLoaded", fn);
+    <style>
+        @media screen and (min-height: 1024px) {
+            #footer {
+                position: fixed;
+                bottom: 0;
             }
         }
-
-        window.onresize = () => {
-            if (window.innerHeight >= 1024) {
-                twitter_footer.style.position = "fixed";
-                twitter_footer.style.bottom = "1.4rem";
-                github_footer.style.position = "fixed";
-                github_footer.style.bottom = "1px";
-            } else {
-                twitter_footer.style.position = "inherit";
-                twitter_footer.style.bottom = "0px";
-                github_footer.style.position = "inherit";
-                github_footer.style.bottom = "0px";
-            }
-        }
-        window.onresize()
-    </script>
+    </style>
 </body>
 </html>
